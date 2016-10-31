@@ -1,49 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/common_bg"
-    android:orientation="vertical" >
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#0d0d0d"
+	android:context=".u.MainActivity">
+	<ImageView
+		android:layout_width="90dp"
+		android:layout_height="90dp"
+		android:layout_marginTop="150dp"
+		android:layout_centerHorizontal="true"
+		android:layout_gravity="center"
+		android:src="@drawable/icon_logo"
+		android:id="@+id/imageView2"
+		/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_top_bar"
-        android:background="@color/top_bar_normal_bg"
-        android:gravity="center_vertical" >
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:weightSum="1"
+		android:layout_below="@+id/imageView2"
+		android:layout_centerHorizontal="true">
 
-        <include layout="@layout/ease_commom_back_btn" />
+		<Button
+			android:src="icon_btn_login"
+			android:layout_width="120dp"
+			android:layout_height="30dp"
+			android:background="#5fb972"
+			android:id="@+id/button"
+			android:text="Login"
+			android:textColor="#fff"
+			android:layout_marginTop="64dp"
+			android:layout_below="@+id/imageView2"
+			android:layout_alignRight="@+id/imageView2"
+			android:layout_alignEnd="@+id/imageView2" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/group_chat"
-            android:textColor="@color/bottom_text_color_normal"
-            android:textSize="18sp" />
-    </RelativeLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-        
-         <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_layout"
-            android:layout_height="match_parent" 
-            android:layout_width="match_parent">
-             
-		    <ListView
-		        android:id="@+id/list"
-		        android:layout_width="match_parent"
-		        android:layout_height="match_parent"
-		        android:background="@android:color/transparent"
-		        android:cacheColorHint="#00000000"
-		        android:descendantFocusability="afterDescendants"
-		        android:divider="#D4D4D4"
-		        android:dividerHeight="1px"
-		        android:fastScrollAlwaysVisible="false"
-		        android:fastScrollEnabled="false" />
-		 </android.support.v4.widget.SwipeRefreshLayout>
-		 
-    </FrameLayout>
-
-</LinearLayout>
+		<Button
+			android:src="icon_btn_login"
+			android:layout_width="match_parent"
+			android:layout_height="30dp"
+			android:background="#fff"
+			android:id="@+id/buttons"
+			android:text="Sign    up"
+			android:textColor="#fffo"
+			android:layout_marginTop="64dp"
+			android:layout_below="@+id/imageView2"
+			android:layout_alignRight="@+id/imageView2"
+			android:layout_alignEnd="@+id/imageView2"
+			android:layout_weight="0.02" />
+	</LinearLayout>
+</RelativeLayout>
