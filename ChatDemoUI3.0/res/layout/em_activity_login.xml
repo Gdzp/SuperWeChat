@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:weightSum="1">
+<LinearLayout
+    android:background="#0e0e0e"
+    android:layout_width="390dp"
+    android:layout_height="50dp"
     android:weightSum="1">
-    <LinearLayout
-        android:background="#0e0e0e"
-        android:layout_width="390dp"
-        android:layout_height="50dp"
-        android:weightSum="1">
 
-        <ImageView
+    <ImageView
 
-            android:layout_width="54dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/em_mm_title_back"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="0.07" />
-    </LinearLayout>
+        android:layout_width="54dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/em_mm_title_back"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="0.07" />
+</LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:orientation="horizontal">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="85dp"
+    android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="match_parent"
-            android:text="用户名："
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="87dp"
-            android:hint="你的用户名"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-    </LinearLayout>
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:background="#848282"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="match_parent"
-            android:text="密 码："
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="填写你的密码"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-    </LinearLayout>
-
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:background="#848282"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.40"
-        android:orientation="vertical"
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:text="用户名："
+        android:textSize="20dp"
         android:gravity="center"
-        android:weightSum="1">
-        <Button
-            android:layout_width="388dp"
-            android:layout_height="wrap_content"
-            android:background="#36cc56"
-            android:text="登 录"
-            android:textColor="#fff"
-            android:textSize="20dp"
-            />
-        <TextView
-            android:layout_width="126dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="120dp"
-            android:text="登录遇到的问题？" />
+        android:textColor="#060606" />
 
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:weightSum="1"
-        android:layout_weight="0.47">
+        android:layout_height="87dp"
+        android:hint="你的用户名"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#060606" />
+</LinearLayout>
+<View
+    android:layout_width="wrap_content"
+    android:layout_height="2dp"
+    android:background="#848282"/>
 
-        <Button
-            android:layout_width="90dp"
-            android:layout_height="62dp"
-            android:text="注 册"
-            android:textSize="20dp"
-            android:textColor="#0a0909"
-            android:layout_gravity="center"
-            android:layout_marginTop="90dp"
-            android:layout_marginBottom="58dp"
-            android:gravity="center"
-            android:paddingBottom="10dp"
-            android:layout_marginLeft="140dp"
-            />
-    </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="74dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:text="密 码："
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#060606" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="填写你的密码"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="#060606" />
+</LinearLayout>
+
+
+<View
+    android:layout_width="wrap_content"
+    android:layout_height="2dp"
+    android:background="#848282"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="0.40"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:weightSum="1">
+    <Button
+        android:layout_width="388dp"
+        android:layout_height="wrap_content"
+        android:background="#36cc56"
+        android:text="登 录"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="126dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="120dp"
+        android:text="登录遇到的问题？" />
+
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:weightSum="1"
+    android:layout_weight="0.47">
+
+    <Button
+        android:layout_width="90dp"
+        android:layout_height="62dp"
+        android:text="注 册"
+        android:textSize="20dp"
+        android:textColor="#0a0909"
+        android:layout_gravity="center"
+        android:layout_marginTop="90dp"
+        android:layout_marginBottom="58dp"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:layout_marginLeft="140dp"
+        />
+</LinearLayout>
 
 </LinearLayout>
