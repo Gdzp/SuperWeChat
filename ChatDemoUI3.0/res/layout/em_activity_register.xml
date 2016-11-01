@@ -1,155 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
-    <LinearLayout
-        android:background="#0e0e0e"
-        android:layout_width="390dp"
-        android:layout_height="50dp"
-        android:weightSum="1">
-
-        <ImageView
-
-            android:layout_width="54dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/em_mm_title_back"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="0.07" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="85dp"
-        android:orientation="horizontal">
-
-        <TextView
-
-            android:layout_width="130dp"
-            android:layout_height="match_parent"
-            android:text="用户名："
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="87dp"
-            android:hint="你的用户名"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-    </LinearLayout>
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:background="#848282"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="match_parent"
-            android:text="昵 称："
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="你的昵称"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-    </LinearLayout>
-
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:background="#848282"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="match_parent"
-            android:text="密 码："
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="填写你的密码"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-    </LinearLayout>
-
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:background="#848282"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="130dp"
-            android:layout_height="match_parent"
-            android:text="确认密码："
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-
-        <EditText
-            android:id="@+id/confirm_password"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="确认密码"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:textColor="#060606" />
-    </LinearLayout>
-
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
-        android:background="#848282"/>
-
+    android:layout_height="match_parent">
+    <include android:id="@+id/lr_title" layout="@layout/view_layout_title"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.40"
         android:orientation="vertical"
-        android:gravity="center"
-        android:weightSum="1">
+        android:layout_below="@+id/lr_title"
+        android:padding="12dp" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/edittext_login"
+                android:hint="@string/login_txt_username"
+                android:paddingLeft="90dp"
+                android:singleLine="true"
+                android:textColorHint="@color/text_color_hint"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/et_username"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="@string/user_name"
+                android:textColor="@color/text_hint"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/et_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/edittext_login"
+                android:hint="@string/login_txt_nickname"
+                android:paddingLeft="90dp"
+                android:singleLine="true"
+                android:maxLength="11"
+                android:textColorHint="@color/text_color_hint"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/et_nickname"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="@string/nickname"
+                android:textColor="@color/text_hint"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/edittext_login"
+                android:hint="@string/login_txt_inputpwd"
+                android:paddingLeft="90dp"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColorHint="@color/text_color_hint"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/et_password"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="@string/password"
+                android:textColor="@color/text_hint"
+                android:textSize="16sp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/et_confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/edittext_login"
+                android:hint="@string/confirmpassword"
+                android:paddingLeft="90dp"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColorHint="@color/text_color_hint"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/et_confirm_password"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="@string/confirmpassword"
+                android:textColor="@color/text_hint"
+                android:textSize="16sp"
+                />
+        </RelativeLayout>
         <Button
-            android:layout_width="388dp"
-            android:layout_height="wrap_content"
-            android:background="#36cc56"
-            android:text="注 册"
-            android:textColor="#fff"
-            android:textSize="20dp"
-            />
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/btn_enable_green"
+            android:enabled="true"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp"
+            android:text="@string/login_btn_register"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
     </LinearLayout>
 
-
-
-</LinearLayout>
+</RelativeLayout>
