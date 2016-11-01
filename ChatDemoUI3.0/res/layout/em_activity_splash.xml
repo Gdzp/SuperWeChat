@@ -4,7 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#0d0d0d"
-    android:context=".u.MainActivity">
+    android:id="@+id/splash_root"
+    >
     <ImageView
         android:layout_width="90dp"
         android:layout_height="90dp"
