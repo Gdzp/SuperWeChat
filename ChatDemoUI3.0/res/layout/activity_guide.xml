@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#0d0d0d"
+    >
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:src="@drawable/icon_logo"
+        android:id="@+id/iv_splash_login"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_below="@+id/iv_splash_login"
+        android:layout_centerHorizontal="true">
+
+        <Button
+
+            android:src="@drawable/icon_btn_login"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:background="#5fb972"
+            android:id="@+id/img_login"
+            android:text="@string/login"
+            android:textColor="#fff"
+            android:layout_marginTop="64dp"
+            android:layout_below="@+id/imageView2"
+            android:layout_alignRight="@+id/imageView2"
+            android:layout_alignEnd="@+id/imageView2" />
+
+        <Button
+            android:src="@drawable/icon_btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="#fff"
+            android:id="@+id/img_register"
+            android:text="@string/register"
+            android:textColor="#0d0c0c"
+            android:layout_marginTop="64dp"
+            android:layout_below="@+id/imageView2"
+            android:layout_alignRight="@+id/imageView2"
+            android:layout_alignEnd="@+id/imageView2"
+            android:layout_weight="0.02" />
+    </LinearLayout>
+</RelativeLayout>
