@@ -4,78 +4,62 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
 android:weightSum="1">
-<LinearLayout
-    android:background="#0e0e0e"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:weightSum="1"
-    android:layout_weight="0.10">
+    <include android:id="@+id/lr_title" layout="@layout/view_layout_title"/>
 
-    <ImageView
-
-        android:layout_width="54dp"
-        android:layout_height="match_parent"
-        android:src="@drawable/em_mm_title_back"
-        android:layout_marginLeft="10dp"
-        android:layout_weight="0.07" />
-</LinearLayout>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="85dp"
-    android:orientation="horizontal">
-
-    <TextView
-        android:layout_width="130dp"
-        android:layout_height="match_parent"
-        android:text="用户名："
-        android:textSize="20dp"
-        android:gravity="center"
-        android:textColor="#060606" />
-
-    <EditText
-        android:id="@+id/username"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="87dp"
-        android:hint="你的用户名"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:textColor="#060606" />
-</LinearLayout>
-<View
-    android:layout_width="wrap_content"
-    android:layout_height="2dp"
-    android:background="#848282"/>
+        android:layout_height="wrap_content" >
 
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/edittext_login"
+            android:hint="@string/login_txt_username"
+            android:paddingLeft="90dp"
+            android:singleLine="true"
+            android:textColorHint="@color/text_color_hint"
+            android:textSize="16sp" />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="74dp"
-    android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/username"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="用户名"
+            android:textColor="@color/text_hint"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="130dp"
-        android:layout_height="match_parent"
-        android:text="密 码："
-        android:textSize="20dp"
-        android:gravity="center"
-        android:textColor="#060606" />
-
-    <EditText
-        android:id="@+id/password"
+    </RelativeLayout>
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:hint="填写你的密码"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:textColor="#060606" />
-</LinearLayout>
+        android:layout_height="wrap_content" >
 
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/edittext_login"
+            android:hint="你的密码"
+            android:paddingLeft="90dp"
+            android:singleLine="true"
+            android:maxLength="11"
+            android:textColorHint="@color/text_color_hint"
+            android:textSize="16sp" />
 
-<View
-    android:layout_width="wrap_content"
-    android:layout_height="2dp"
-    android:background="#848282"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="密  码"
+            android:textColor="@color/text_hint"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -85,6 +69,7 @@ android:weightSum="1">
     android:gravity="center"
     android:weightSum="1">
     <Button
+        android:id="@+id/btn_login"
         android:layout_width="388dp"
         android:layout_height="wrap_content"
         android:background="#36cc56"
@@ -107,11 +92,13 @@ android:weightSum="1">
     android:layout_weight="0.47">
 
     <Button
+        android:background="#e2dbdb"
+        android:id="@+id/btn_register"
         android:layout_width="90dp"
         android:layout_height="62dp"
         android:text="注 册"
         android:textSize="20dp"
-        android:textColor="#0a0909"
+        android:textColor="#0d0d0d"
         android:layout_gravity="center"
         android:layout_marginTop="90dp"
         android:layout_marginBottom="58dp"
