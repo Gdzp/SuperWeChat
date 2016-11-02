@@ -18,6 +18,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hyphenate.EMError;
@@ -27,11 +29,14 @@ import com.hyphenate.exceptions.HyphenateException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.ucai.superwechat.I;
 import cn.ucai.superwechat.R;
 import cn.ucai.superwechat.SuperWeChatHelper;
 import cn.ucai.superwechat.bean.Result;
 import cn.ucai.superwechat.data.NetDao;
 import cn.ucai.superwechat.data.OkHttpUtils;
+import cn.ucai.superwechat.utils.CommonUtils;
+import cn.ucai.superwechat.utils.MD5;
 import cn.ucai.superwechat.utils.MFGT;
 
 /**
@@ -46,34 +51,38 @@ public class RegisterActivity extends BaseActivity {
     EditText mEPassword;
     @BindView(R.id.et_confirm_password)
     EditText mEConfirmPassword;
-    ProgressDialog pd=null;
+    ProgressDialog pd = null;
 
     String username;
-     String nickname;
-    String pwd ;
+    String nickname;
+    String pwd;
     RegisterActivity mContext;
+    @BindView(R.id.img_back)
+    ImageView mImgBack;
+    @BindView(R.id.txt_title)
+    TextView mTxtTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.em_activity_register);
-        mContext=this;
+        mContext = this;
         ButterKnife.bind(this);
         initView();
 
     }
 
     private void initView() {
-//        mImgBack.setVisibility(View.VISIBLE);
-//        mTxtTitle.setVisibility(View.VISIBLE);
-//        mTxtTitle.setText(R.string.register);
+        mImgBack.setVisibility(View.VISIBLE);
+        mTxtTitle.setVisibility(View.VISIBLE);
+        mTxtTitle.setText(R.string.register);
 
     }
 
     public void register() {
-       username =mEtUsername.getText().toString().trim();
-        nickname =mEtNickname.getText().toString().trim();
-       pwd = mEPassword.getText().toString().trim();
+        username = mEtUsername.getText().toString().trim();
+        nickname = mEtNickname.getText().toString().trim();
+        pwd = mEPassword.getText().toString().trim();
         String confirm_pwd = mEConfirmPassword.getText().toString().trim();
         if (TextUtils.isEmpty(username)) {
             Toast.makeText(this, getResources().getString(R.string.User_name_cannot_be_empty), Toast.LENGTH_SHORT).show();
@@ -117,16 +126,26 @@ public class RegisterActivity extends BaseActivity {
         NetDao.register(mContext, username, nickname, pwd, new OkHttpUtils.OnCompleteListener<Result>() {
             @Override
             public void onSuccess(Result result) {
-                if (result!=null&&result.isRetMsg()){
-                    registerEMServer();
+                if (result==null){
+                    pd.dismiss();
+
                 }else {
-                    unregisterAppServer();
+                    if (result.isRetMsg()){
+                        registerEMServer();
+                    }else {
+                        if (result.getRetCode()== I.MSG_REGISTER_USERNAME_EXISTS) {
+                            CommonUtils.showMsgShortToast(result.getRetCode());
+                        }else {
+                            unregisterAppServer();
+                        }
+                    }
                 }
+
             }
 
             @Override
             public void onError(String error) {
-             pd.dismiss();
+                pd.dismiss();
             }
         });
 
@@ -136,12 +155,12 @@ public class RegisterActivity extends BaseActivity {
         NetDao.unregister(mContext, username, new OkHttpUtils.OnCompleteListener<Result>() {
             @Override
             public void onSuccess(Result result) {
-              pd.dismiss();
+                pd.dismiss();
             }
 
             @Override
             public void onError(String error) {
-             pd.dismiss();
+                pd.dismiss();
             }
         });
 
@@ -152,7 +171,7 @@ public class RegisterActivity extends BaseActivity {
             public void run() {
                 try {
                     // call method in SDK
-                    EMClient.getInstance().createAccount(username, pwd);
+                    EMClient.getInstance().createAccount(username, MD5.getMessageDigest(pwd));
                     runOnUiThread(new Runnable() {
                         public void run() {
                             if (!RegisterActivity.this.isFinishing())
@@ -160,7 +179,7 @@ public class RegisterActivity extends BaseActivity {
                             // save current user
                             SuperWeChatHelper.getInstance().setCurrentUserName(username);
                             Toast.makeText(getApplicationContext(), getResources().getString(R.string.Registered_successfully), Toast.LENGTH_SHORT).show();
-                           MFGT.finish(mContext);
+                            MFGT.finish(mContext);
                         }
                     });
                 } catch (final HyphenateException e) {
@@ -189,7 +208,7 @@ public class RegisterActivity extends BaseActivity {
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         MFGT.finish(this);
     }
 
@@ -197,9 +216,9 @@ public class RegisterActivity extends BaseActivity {
         finish();
     }
 
-    @OnClick({R.id.img_back,R.id.btn_register})
+    @OnClick({R.id.img_back, R.id.btn_register})
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.img_back:
                 MFGT.finish(this);
                 break;
@@ -209,5 +228,5 @@ public class RegisterActivity extends BaseActivity {
         }
     }
 
-   
+
 }
