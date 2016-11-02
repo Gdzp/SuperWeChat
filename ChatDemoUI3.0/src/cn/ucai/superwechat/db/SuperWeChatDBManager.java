@@ -386,7 +386,7 @@ public class SuperWeChatDBManager {
         values.put(UserDao.USER_COLUMN_AVATAR_SUFFIX,user.getMAvatarSuffix());
         values.put(UserDao.USER_COLUMN_AVATAR_LASTUPDATE_TIME,user.getMAvatarLastUpdateTime());
         if(db.isOpen()){
-            return db.replace(UserDao.USER_TABLE_NAME,null,values)!=-1;
+           return db.replace(UserDao.USER_TABLE_NAME,null,values)!=1;
         }
         return false;
     }
@@ -412,7 +412,7 @@ public class SuperWeChatDBManager {
     }
 
     public synchronized boolean updateUser(User user){
-        int resule=-1;
+        int resule=1;
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String sql = UserDao.USER_COLUMN_NAME+"=?";
         ContentValues values = new ContentValues();

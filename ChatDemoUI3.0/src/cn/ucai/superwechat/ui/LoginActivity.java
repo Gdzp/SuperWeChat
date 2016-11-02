@@ -177,7 +177,7 @@ public class LoginActivity extends BaseActivity {
                         User user= (User) result.getRetData();
                         if (user!=null){
                             UserDao dao=new UserDao(mContext);
-                            dao.saveUser(user);
+                          dao.saveUser(user);
                             SuperWeChatHelper.getInstance().setCurrentUser(user);
                             loginSuccess();
                         }
@@ -186,6 +186,8 @@ public class LoginActivity extends BaseActivity {
                         L.e(TAG,"login fail,"+result);
                     }
 
+                }else {
+                    pd.dismiss();
                 }
 
             }
@@ -296,5 +298,9 @@ public class LoginActivity extends BaseActivity {
                 MFGT.finish(this);
                 break;
         }
+    }
+    protected void onDestroy(){
+        super.onDestroy();
+        pd.dismiss();
     }
 }
