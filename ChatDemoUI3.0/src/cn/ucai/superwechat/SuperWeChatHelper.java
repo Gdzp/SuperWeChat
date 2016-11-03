@@ -64,6 +64,10 @@ import cn.ucai.superwechat.utils.L;
 import cn.ucai.superwechat.utils.PreferenceManager;
 
 public class SuperWeChatHelper {
+
+
+    private Map<String, User> appContactList;
+
     /**
      * data sync listener
      */
@@ -910,7 +914,8 @@ public class SuperWeChatHelper {
     }
 
 	public void setRobotList(Map<String, RobotUser> robotList) {
-		this.robotList = robotList;
+
+        this.robotList = robotList;
 	}
 
 	public Map<String, RobotUser> getRobotList() {
@@ -1254,5 +1259,59 @@ public User getCurrentUser(){
 }
     public void setCurrentUser(User currentUser){
         this.currentUser=currentUser;
+    }
+
+
+    /**
+     * update contact list
+     * contactList
+     * @param`
+     */
+    public void setAppContactList(Map<String, User> aContactList) {
+        
+        if(aContactList == null){
+            if (appContactList != null) {
+                appContactList.clear();
+            }
+            return;
+        }
+
+        appContactList = aContactList;
+    }
+
+    /**
+     * save single contact
+     */
+    public void saveAppContact(User user){
+        appContactList.put(user.getMUserName(), user);
+        demoModel.saveAppContact(user);
+    }
+
+    /**
+     * get contact list
+     *
+     * @return
+     */
+    public Map<String, User> getAppContactList() {
+        if (isLoggedIn() && appContactList == null) {
+            appContactList = demoModel.getAppContactList();
+        }
+
+        // return a empty non-null object to avoid app crash
+        if(appContactList == null){
+            return new Hashtable<String, User>();
+        }
+
+        return appContactList;
+    }
+
+
+    public void updateAppContactList(List<User> contactInfoList) {
+        for (User u : contactInfoList) {
+            appContactList.put(u.getMUserName(), u);
+        }
+        ArrayList<User> mList = new ArrayList<User>();
+        mList.addAll(appContactList.values());
+        demoModel.saveAppContactList(mList);
     }
 }
