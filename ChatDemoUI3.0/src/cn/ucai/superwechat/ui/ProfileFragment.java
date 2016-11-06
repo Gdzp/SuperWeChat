@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.ucai.superwechat.Constant;
 import cn.ucai.superwechat.R;
+import cn.ucai.superwechat.utils.MFGT;
 
 /**
  * Created by Think on 2016/11/5.
@@ -54,12 +55,14 @@ public class ProfileFragment extends Fragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.layout_profile_view:
+                MFGT.gotoUserProfile(getActivity());
                 break;
             case R.id.tv_profile_money:
                 //red packet code : 进入零钱页面
                 RedPacketUtil.startChangeActivity(getActivity());
                 break;
             case R.id.tv_profile_setting:
+                MFGT.gotoSetting(getActivity());
                 break;
         }
     }
