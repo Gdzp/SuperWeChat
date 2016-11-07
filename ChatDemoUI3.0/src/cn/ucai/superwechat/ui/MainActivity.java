@@ -79,9 +79,9 @@ public class MainActivity extends BaseActivity implements DMTabHost.OnCheckedCha
     @BindView(R.id.layout_tabhost)
     DMTabHost layoutTabhost;
     // textview for unread message count
-    private TextView unreadLabel;
-    // textview for unread event message
-    private TextView unreadAddressLable;
+//    private TextView unreadLabel;
+//    // textview for unread event message
+//    private TextView unreadAddressLable;
 
 //    private Button[] mTabs;
 //    private ContactListFragment contactListFragment;
@@ -265,7 +265,7 @@ public class MainActivity extends BaseActivity implements DMTabHost.OnCheckedCha
             for (EMMessage message : messages) {
                 SuperWeChatHelper.getInstance().getNotifier().onNewMsg(message);
             }
-            refreshUIWithMessage();
+//            refreshUIWithMessage();
         }
 
         @Override
@@ -279,7 +279,7 @@ public class MainActivity extends BaseActivity implements DMTabHost.OnCheckedCha
                 }
             }
             //end of red packet code
-            refreshUIWithMessage();
+//            refreshUIWithMessage();
         }
 
         @Override
@@ -295,20 +295,20 @@ public class MainActivity extends BaseActivity implements DMTabHost.OnCheckedCha
         }
     };
 
-    private void refreshUIWithMessage() {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                // refresh unread count
-                updateUnreadLabel();
+//    private void refreshUIWithMessage() {
+//        runOnUiThread(new Runnable() {
+//            public void run() {
+//                // refresh unread count
+//                updateUnreadLabel();
 //                if (currentTabIndex == 0) {
 //                    // refresh conversation list
 //                    if (conversationListFragment != null) {
 //                        conversationListFragment.refresh();
 //                    }
 //                }
-            }
-        });
-    }
+//            }
+//        });
+//    }
 
     @Override
     public void back(View view) {
@@ -325,8 +325,8 @@ public class MainActivity extends BaseActivity implements DMTabHost.OnCheckedCha
 
             @Override
             public void onReceive(Context context, Intent intent) {
-                updateUnreadLabel();
-                updateUnreadAddressLable();
+//                updateUnreadLabel();
+//                updateUnreadAddressLable();
 //                if (currentTabIndex == 0) {
 //                    // refresh conversation list
 //                    if (conversationListFragment != null) {
@@ -434,32 +434,32 @@ public class MainActivity extends BaseActivity implements DMTabHost.OnCheckedCha
     /**
      * update unread message count
      */
-    public void updateUnreadLabel() {
-        int count = getUnreadMsgCountTotal();
-        if (count > 0) {
-            unreadLabel.setText(String.valueOf(count));
-            unreadLabel.setVisibility(View.VISIBLE);
-        } else {
-          unreadLabel.setVisibility(View.INVISIBLE);
-        }
-    }
+//    public void updateUnreadLabel() {
+//        int count = getUnreadMsgCountTotal();
+//        if (count > 0) {
+//            unreadLabel.setText(String.valueOf(count));
+//            unreadLabel.setVisibility(View.VISIBLE);
+//        } else {
+//          unreadLabel.setVisibility(View.INVISIBLE);
+//        }
+//    }
 
     /**
      * update the total unread count
      */
-    public void updateUnreadAddressLable() {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                int count = getUnreadAddressCountTotal();
-                if (count > 0) {
-                    unreadAddressLable.setVisibility(View.VISIBLE);
-                } else {
-                    unreadAddressLable.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-    }
+//    public void updateUnreadAddressLable() {
+//        runOnUiThread(new Runnable() {
+//            public void run() {
+//                int count = getUnreadAddressCountTotal();
+//                if (count > 0) {
+//                    unreadAddressLable.setVisibility(View.VISIBLE);
+//                } else {
+//                    unreadAddressLable.setVisibility(View.INVISIBLE);
+//                }
+//            }
+//        });
+//
+//    }
 
     /**
      * get unread event notification count, including application, accepted, etc
@@ -495,8 +495,8 @@ public class MainActivity extends BaseActivity implements DMTabHost.OnCheckedCha
         super.onResume();
 
         if (!isConflict && !isCurrentAccountRemoved) {
-            updateUnreadLabel();
-            updateUnreadAddressLable();
+//          updateUnreadLabel();
+//            updateUnreadAddressLable();
         }
 
         // unregister this event listener when this activity enters the
