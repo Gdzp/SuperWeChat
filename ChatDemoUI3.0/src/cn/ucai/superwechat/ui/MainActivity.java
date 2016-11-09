@@ -56,6 +56,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 import cn.ucai.superwechat.Constant;
 import cn.ucai.superwechat.I;
 import cn.ucai.superwechat.R;
@@ -488,13 +489,11 @@ public class MainActivity extends BaseActivity implements DMTabHost.OnCheckedCha
      */
    public void updateUnreadLabel() {
     int count = getUnreadMsgCountTotal();
-//        if (count > 0) {
-//            unreadLabel.setText(String.valueOf(count));
-//            unreadLabel.setVisibility(View.VISIBLE);
-//        } else {
-//          unreadLabel.setVisibility(View.INVISIBLE);
-//        }
-    }
+    L.e(TAG,"updateUnread,count="+count);
+    layoutTabhost.setUnreadCount(0,count);
+           }
+
+
 
     /**
      * update the total unread count
