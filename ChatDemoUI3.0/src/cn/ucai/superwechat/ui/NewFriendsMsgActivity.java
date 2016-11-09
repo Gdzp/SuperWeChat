@@ -28,6 +28,7 @@ import cn.ucai.superwechat.R;
 import cn.ucai.superwechat.adapter.NewFriendsMsgAdapter;
 import cn.ucai.superwechat.db.InviteMessgeDao;
 import cn.ucai.superwechat.domain.InviteMessage;
+import cn.ucai.superwechat.utils.MFGT;
 
 /**
  * Application and notification
@@ -65,5 +66,6 @@ public class NewFriendsMsgActivity extends BaseActivity {
 
     @OnClick(R.id.img_back)
     public void onClick() {
+        MFGT.finish(this);
     }
 }

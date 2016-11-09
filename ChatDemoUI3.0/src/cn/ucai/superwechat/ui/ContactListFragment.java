@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.easeui.domain.EaseUser;
+import com.hyphenate.easeui.domain.User;
 import com.hyphenate.easeui.ui.EaseContactListFragment;
 import com.hyphenate.util.EMLog;
 import com.hyphenate.util.NetUtils;
@@ -38,9 +39,13 @@ import java.util.Map;
 
 import cn.ucai.superwechat.R;
 import cn.ucai.superwechat.SuperWeChatHelper;
+import cn.ucai.superwechat.bean.Result;
+import cn.ucai.superwechat.data.NetDao;
+import cn.ucai.superwechat.data.OkHttpUtils;
 import cn.ucai.superwechat.db.InviteMessgeDao;
 import cn.ucai.superwechat.db.UserDao;
 import cn.ucai.superwechat.utils.MFGT;
+import cn.ucai.superwechat.utils.ResultUtils;
 import cn.ucai.superwechat.widget.ContactItemView;
 
 /**
@@ -99,17 +104,17 @@ public class ContactListFragment extends EaseContactListFragment {
     @SuppressWarnings("unchecked")
     @Override
     protected void setUpView() {
+
         titleBar.setRightImageResource(R.drawable.em_add);
         titleBar.setRightLayoutClickListener(new OnClickListener() {
-            
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), AddContactActivity.class));
+              startActivity(new Intent(getActivity(), AddContactActivity.class));
                 NetUtils.hasDataConnection(getActivity());
             }
         });
         titleBar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        titleBar.setVisibility(View.GONE);
+      titleBar.setVisibility(View.GONE);
 
         //设置联系人数据
         Map<String, EaseUser> m = SuperWeChatHelper.getInstance().getContactList();
@@ -127,7 +132,7 @@ public class ContactListFragment extends EaseContactListFragment {
                     String username = user.getUsername();
                     // demo中直接进入聊天页面，实际一般是进入用户详情页
                     MFGT.gotoFirendProfile(getActivity(),SuperWeChatHelper.getInstance().getAppContactList().get(username));
-                    startActivity(new Intent(getActivity(), ChatActivity.class).putExtra("userId", username));
+//                    startActivity(new Intent(getActivity(), ChatActivity.class).putExtra("userId", username));
                 }
             }
         });
@@ -217,7 +222,7 @@ public class ContactListFragment extends EaseContactListFragment {
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-		if (item.getItemId() == R.id.delete_contact) {
+        if (item.getItemId() == R.id.delete_contact) {
 			try {
                 // delete contact
                 deleteContact(toBeProcessUser);
@@ -245,6 +250,25 @@ public class ContactListFragment extends EaseContactListFragment {
 		pd.setMessage(st1);
 		pd.setCanceledOnTouchOutside(false);
 		pd.show();
+
+        NetDao.delContact(getActivity(), EMClient.getInstance().getCurrentUser(), tobeDeleteUser.getUsername(),
+                new OkHttpUtils.OnCompleteListener<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        if (s!=null){
+                       Result result= ResultUtils.getResultFromJson(s,User.class);
+                            if (result!=null&&result.isRetMsg()){
+                                SuperWeChatHelper.getInstance().delAppContact(tobeDeleteUser.getUsername());
+
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(String error) {
+
+                    }
+                });
 		new Thread(new Runnable() {
 			public void run() {
 				try {

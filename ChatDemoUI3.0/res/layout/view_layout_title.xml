@@ -5,7 +5,7 @@
     android:background="@color/colorPrimary">
 
     <TextView
-        android:id="@+id/txt_left"
+        android:id="@+id/txt_lef"
         style="@style/txt_titleStyle1"
         android:textSize="17sp"
         android:visibility="gone"

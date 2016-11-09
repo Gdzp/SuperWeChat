@@ -92,7 +92,7 @@ public class UserProfileActivity extends BaseActivity implements OnClickListener
 
 
 
-    public void asyncFetchUserInfo(String username) {
+    public void acsyncFetchUserInfo(String username) {
         SuperWeChatHelper.getInstance().getUserProfileManager().asyncGetUserInfo(username, new EMValueCallBack<EaseUser>() {
 
             @Override
@@ -251,6 +251,8 @@ public class UserProfileActivity extends BaseActivity implements OnClickListener
                 if (s!=null){
                     Result result=ResultUtils.getResultFromJson(s,User.class);
                     if (result!=null&&result.isRetMsg()){
+                        User u= (User) result.getRetData();
+                        SuperWeChatHelper.getInstance().saveAppContact(u);
                         setPicToView(picData);
                     }else {
                         dialog.dismiss();
@@ -297,7 +299,9 @@ L.e(TAG,"error="+error);
             Bitmap photo = extras.getParcelable("data");
             Drawable drawable = new BitmapDrawable(getResources(), photo);
             ivUserinfoAvatar.setImageDrawable(drawable);
-            uploadUserAvatar(Bitmap2Bytes(photo));
+            dialog.dismiss();
+            Toast.makeText(UserProfileActivity.this,getString(R.string.toast_updatephoto_success),Toast.LENGTH_SHORT).show();
+//            uploadUserAvatar(Bitmap2Bytes(photo));
         }
 
     }
@@ -377,7 +381,7 @@ L.e(TAG,"error="+error);
         if (extras!=null){
             Bitmap bitmap=extras.getParcelable("data");
             String imagePath= EaseImageUtils.getImagePath(user.getMUserName()+ I.AVATAR_SUFFIX_JPG);
-            File file=new File("");
+            File file=new File(imagePath);
             L.e("file path="+file.getAbsolutePath());
             try {
                 BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream(file));

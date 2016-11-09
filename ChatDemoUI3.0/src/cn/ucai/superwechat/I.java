@@ -60,7 +60,7 @@ public interface I {
     int REQUEST_CODE_LOGIN_FROM_CART =107 ;
     String BROADCAST_UPDATA_CART = "cn.ucai.fulicenter.update.cart";
     int CART_CHECKED_DEFAULT =0 ;
-
+    String ACTION_BACK_CONVERSATION = "action_back_conversation";
 
 
     interface Goods {
