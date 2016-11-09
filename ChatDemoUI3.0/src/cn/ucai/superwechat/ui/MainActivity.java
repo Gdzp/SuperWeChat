@@ -551,7 +551,11 @@ public class MainActivity extends BaseActivity implements DMTabHost.OnCheckedCha
           updateUnreadLabel();
             updateUnreadAddressLable();
         }
-       getIntent().getBooleanExtra(I.ACTION_BACK_CONVERSATION,false);
+      boolean extra= getIntent().getBooleanExtra(I.ACTION_BACK_CONVERSATION,false);
+        L.e(TAG,"extra="+extra);
+        if (extra){
+            layoutTabhost.setChecked(0);
+        }
         // unregister this event listener when this activity enters the
         // background
         SuperWeChatHelper sdkHelper = SuperWeChatHelper.getInstance();
@@ -665,6 +669,11 @@ public class MainActivity extends BaseActivity implements DMTabHost.OnCheckedCha
             showConflictDialog();
         } else if (intent.getBooleanExtra(Constant.ACCOUNT_REMOVED, false) && !isAccountRemovedDialogShow) {
             showAccountRemovedDialog();
+        }
+        boolean isBack= intent.getBooleanExtra(I.ACTION_BACK_CONVERSATION,false);
+        L.e(TAG," isBack="+ isBack);
+        if ( isBack){
+            layoutTabhost.setChecked(0);
         }
     }
 
